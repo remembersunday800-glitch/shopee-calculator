@@ -5,16 +5,35 @@ export default function TombolReset({ onClick, disabled = false }) {
       onClick={onClick}
       disabled={disabled}
       aria-label="Reset semua input ke nilai awal"
-      className="w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EE4D2D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A]"
       style={{
-        border: '1px solid #EE4D2D',
-        color: '#EE4D2D',
+        width: '100%',
+        padding: '12px 20px',
+        borderRadius: 10,
+        border: '1px solid var(--border)',
         backgroundColor: 'transparent',
-        opacity: disabled ? 0.5 : 1,
+        color: 'var(--text-secondary)',
+        fontSize: 13,
+        fontWeight: 500,
         cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? 0.4 : 1,
+        transition: 'all 0.2s',
+        fontFamily: 'inherit',
+        letterSpacing: '0.2px',
       }}
-      onMouseEnter={(e) => { if (!disabled) { e.target.style.backgroundColor = '#EE4D2D'; e.target.style.color = '#FFFFFF'; } }}
-      onMouseLeave={(e) => { if (!disabled) { e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#EE4D2D'; } }}
+      onMouseEnter={(e) => {
+        if (!disabled) {
+          e.target.style.borderColor = 'var(--accent)';
+          e.target.style.color = 'var(--accent)';
+          e.target.style.backgroundColor = 'var(--accent-glow)';
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!disabled) {
+          e.target.style.borderColor = 'var(--border)';
+          e.target.style.color = 'var(--text-secondary)';
+          e.target.style.backgroundColor = 'transparent';
+        }
+      }}
     >
       Reset
     </button>

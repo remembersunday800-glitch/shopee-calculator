@@ -21,7 +21,16 @@ export default function NavigasiTab({ tabAktif, onGantiTab }) {
   }, [onGantiTab]);
 
   return (
-    <div role="tablist" aria-label="Navigasi kalkulator" className="flex border-b" style={{ borderColor: '#2A2A2A' }}>
+    <div
+      role="tablist"
+      aria-label="Navigasi kalkulator"
+      style={{
+        display: 'flex',
+        borderBottom: '1px solid var(--border)',
+        padding: '0 24px',
+        gap: 4,
+      }}
+    >
       {TABS.map((tab, index) => {
         const isActive = tabAktif === tab.id;
         return (
@@ -35,11 +44,19 @@ export default function NavigasiTab({ tabAktif, onGantiTab }) {
             tabIndex={isActive ? 0 : -1}
             onClick={() => onGantiTab(tab.id)}
             onKeyDown={(e) => handleKeyDown(e, index)}
-            className="px-5 py-3 text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#EE4D2D]"
             style={{
-              color: isActive ? '#EE4D2D' : '#A0A0A0',
-              borderBottom: isActive ? '2px solid #EE4D2D' : '2px solid transparent',
-              backgroundColor: 'transparent',
+              background: 'none',
+              border: 'none',
+              padding: '16px 20px',
+              fontSize: 13,
+              fontWeight: isActive ? 600 : 400,
+              color: isActive ? '#fff' : 'var(--text-secondary)',
+              cursor: 'pointer',
+              position: 'relative',
+              transition: 'color 0.2s',
+              borderBottom: isActive ? '2px solid var(--accent)' : '2px solid transparent',
+              marginBottom: -1,
+              letterSpacing: '-0.1px',
             }}
           >
             {tab.label}

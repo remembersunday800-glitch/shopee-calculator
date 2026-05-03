@@ -4,15 +4,22 @@ import RincianBiaya from './RincianBiaya.jsx';
 export default function HasilKalkulasi({ hasil, input }) {
   if (!hasil) {
     return (
-      <div className="rounded-xl p-8 text-center" style={{ backgroundColor: '#1A1A1A', border: '1px solid #2A2A2A' }}>
-        <p className="text-sm" style={{ color: '#A0A0A0' }}>
+      <div style={{
+        borderRadius: 16,
+        padding: '48px 24px',
+        textAlign: 'center',
+        backgroundColor: 'var(--bg-card)',
+        border: '1px dashed var(--border)',
+      }}>
+        <div style={{ fontSize: 32, marginBottom: 12 }}>🧮</div>
+        <p style={{ margin: 0, fontSize: 13, color: 'var(--text-secondary)' }}>
           Masukkan data produk untuk melihat hasil kalkulasi
         </p>
       </div>
     );
   }
   return (
-    <div>
+    <div className="animate-fade-up">
       <HargaJualUtama hargaJual={hasil.hargaJual} />
       <RincianBiaya hasil={hasil} input={input} />
     </div>

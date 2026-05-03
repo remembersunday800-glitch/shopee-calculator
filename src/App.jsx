@@ -8,54 +8,49 @@ import { useKalkulator } from './hooks/useKalkulator.js';
 
 export default function App() {
   const [tabAktif, setTabAktif] = useState('kalkulator');
-
-  // Satu instance konfigurasi di level App
   const { konfigurasi, biayaPlatformAktif } = useKonfigurasi();
-
-  // Satu instance kalkulator di level App, disinkronkan dengan konfigurasi
-  // Digunakan untuk meneruskan inputBiaya ke TabSimulasi
-  const { input } = useKalkulator(
-    biayaPlatformAktif,
-    konfigurasi.biayaPenangananCustom
-  );
-
-  const handleGantiTab = useCallback((tabId) => {
-    setTabAktif(tabId);
-  }, []);
+  const { input } = useKalkulator(biayaPlatformAktif, konfigurasi.biayaPenangananCustom);
+  const handleGantiTab = useCallback((tabId) => setTabAktif(tabId), []);
 
   return (
-    <div style={{ backgroundColor: '#0D0D0D', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: 'var(--bg-primary)', minHeight: '100vh', position: 'relative', zIndex: 1 }}>
       {/* Header */}
-      <header className="border-b" style={{ borderColor: '#2A2A2A', backgroundColor: '#0D0D0D' }}>
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <header style={{ borderBottom: '1px solid var(--border)', backgroundColor: 'rgba(8,8,8,0.8)', backdropFilter: 'blur(20px)', position: 'sticky', top: 0, zIndex: 50 }}>
+        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm"
-              style={{ backgroundColor: '#EE4D2D', color: '#FFFFFF' }}
-            >
-              S
-            </div>
+            {/* Logo */}
+            <div style={{
+              width: 36, height: 36, borderRadius: 10,
+              background: 'linear-gradient(135deg, #EE4D2D 0%, #FF6B47 100%)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontWeight: 900, fontSize: 16, color: '#fff',
+              boxShadow: '0 4px 15px rgba(238,77,45,0.4)'
+            }}>S</div>
             <div>
-              <h1 className="text-sm font-bold" style={{ color: '#FFFFFF' }}>
+              <h1 style={{ margin: 0, fontSize: 14, fontWeight: 700, color: '#fff', letterSpacing: '-0.3px' }}>
                 Kalkulator Harga Jual
               </h1>
-              <p className="text-xs" style={{ color: '#A0A0A0' }}>Shopee Indonesia</p>
+              <p style={{ margin: 0, fontSize: 11, color: 'var(--text-secondary)', fontWeight: 400 }}>
+                Shopee Indonesia
+              </p>
             </div>
           </div>
-          <span
-            className="text-xs px-2 py-1 rounded-full"
-            style={{ backgroundColor: '#1A1A1A', color: '#A0A0A0', border: '1px solid #2A2A2A' }}
-          >
+          <div style={{
+            fontSize: 11, fontWeight: 600, color: 'var(--text-secondary)',
+            padding: '4px 10px', borderRadius: 20,
+            border: '1px solid var(--border)',
+            backgroundColor: 'var(--bg-card)',
+            letterSpacing: '0.5px'
+          }}>
             2026
-          </span>
+          </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto">
+      {/* Main */}
+      <main className="max-w-5xl mx-auto" style={{ position: 'relative', zIndex: 1 }}>
         <NavigasiTab tabAktif={tabAktif} onGantiTab={handleGantiTab} />
 
-        {/* Tab panels — rendered tapi disembunyikan agar state tidak hilang saat ganti tab */}
         <div style={{ display: tabAktif === 'kalkulator' ? 'block' : 'none' }} aria-hidden={tabAktif !== 'kalkulator'}>
           <TabKalkulator
             biayaPlatformDariKonfigurasi={biayaPlatformAktif}
@@ -71,8 +66,8 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-8 pb-6 text-center">
-        <p className="text-xs" style={{ color: '#A0A0A0' }}>
+      <footer style={{ marginTop: 60, paddingBottom: 32, textAlign: 'center' }}>
+        <p style={{ fontSize: 11, color: 'var(--text-muted)', margin: 0 }}>
           Data biaya platform mengacu pada struktur biaya Shopee Indonesia per April 2026
         </p>
       </footer>
