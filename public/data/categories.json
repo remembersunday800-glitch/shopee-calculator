@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-04-01",
+  "biayaPenangananDefault": 1250,
+  "categories": [
+    { "id": "elektronik", "nama": "Elektronik & Aksesori", "biaya": { "non-star": 9.0, "star": 10.5, "star-plus": 12.0 } },
+    { "id": "fashion", "nama": "Fashion & Pakaian", "biaya": { "non-star": 8.0, "star": 9.5, "star-plus": 11.0 } },
+    { "id": "kecantikan", "nama": "Kecantikan & Perawatan", "biaya": { "non-star": 9.0, "star": 10.5, "star-plus": 13.0 } },
+    { "id": "makanan", "nama": "Makanan & Minuman", "biaya": { "non-star": 7.0, "star": 8.5, "star-plus": 10.0 } },
+    { "id": "rumah-tangga", "nama": "Rumah Tangga", "biaya": { "non-star": 8.5, "star": 10.0, "star-plus": 12.0 } },
+    { "id": "olahraga", "nama": "Olahraga & Outdoor", "biaya": { "non-star": 8.0, "star": 9.5, "star-plus": 11.5 } },
+    { "id": "lainnya", "nama": "Lainnya", "biaya": { "non-star": 9.0, "star": 10.5, "star-plus": 12.0 } }
+  ]
+}
